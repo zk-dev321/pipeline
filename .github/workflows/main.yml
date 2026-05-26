@@ -1,0 +1,22 @@
+name: CI - HTML Linter
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Ejecutar Linter de HTML
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Clonar el código del repositorio
+        uses: actions/checkout@v4
+
+      - name: 2. Instalar HTML linter
+        run: npm install -g htmlhint
+
+      - name: 3. Ejecutar Linter
+        run: htmlhint index.html
